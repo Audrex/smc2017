@@ -87,8 +87,8 @@ for ibeta = 1:n_beta
 
             % 3. Compute weights
             wu(:,t) = normpdf(y(t-1).*ones(N,1),zeros(N,1),beta.*sqrt(exp(x(:,t)))); % previous weight does not appear because of resampling step which sets weight to 1/N
-            W = sum(wu(:,t));     % normalization constant
-            w(:,t) = w(:,t)./W;   % normalization
+            W       = sum(wu(:,t)); % normalization constant
+            w(:,t)  = wu(:,t)./W;   % normalization
 
         end % end loop over time for boostrap filter
         
@@ -112,10 +112,10 @@ ylabel('estimated log likelihood')
 
 % INFLUENCE OF N
 
-N_grid = [10,100,500,1000,2000];
-n_N    = length(N_grid);
+N_grid  = [10,100,500,1000,2000];
+n_N     = length(N_grid);
 
-lik_est   = zeros(n_simu,n_beta,n_N);
+lik_est = zeros(n_simu,n_beta,n_N);
 
 for iN = 1:n_N
     
@@ -177,8 +177,8 @@ for iN = 1:n_N
 
                 % 3. Compute weights
                 wu(:,t) = normpdf(y(t-1).*ones(N,1),zeros(N,1),beta.*sqrt(exp(x(:,t)))); % previous weight does not appear because of resampling step which sets weight to 1/N
-                W = sum(wu(:,t));     % normalization constant
-                w(:,t) = w(:,t)./W;   % normalization
+                W       = sum(wu(:,t)); % normalization constant
+                w(:,t)  = wu(:,t)./W;   % normalization
 
             end % end loop over time for boostrap filter
 
@@ -214,7 +214,7 @@ T_grid = [10,50,100,200,500];
 n_T    = length(T_grid);
 T_grid = T_grid + ones(1,n_T);
 
-lik_est   = zeros(n_simu,n_beta,n_T);
+lik_est = zeros(n_simu,n_beta,n_T);
 
 for iT = 1:n_T
     
@@ -274,8 +274,8 @@ for iT = 1:n_T
 
                 % 3. Compute weights
                 wu(:,t) = normpdf(y(t-1).*ones(N,1),zeros(N,1),beta.*sqrt(exp(x(:,t)))); % previous weight does not appear because of resampling step which sets weight to 1/N
-                W = sum(wu(:,t));     % normalization constant
-                w(:,t) = w(:,t)./W;   % normalization
+                W       = sum(wu(:,t)); % normalization constant
+                w(:,t)  = wu(:,t)./W;   % normalization
 
             end % end loop over time for boostrap filter
 
